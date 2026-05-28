@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { PlannerShell } from "@/components/planner/PlannerShell";
+import { PlannerRoom } from "@/components/planner/PlannerRoom";
 
 export const metadata: Metadata = {
   title: "DeltaPlant Planner",
@@ -15,7 +16,7 @@ export default function PlannerPage() {
         </div>
       }
     >
-      <PlannerShell />
+      <PlannerRoom />
     </Suspense>
   );
 }
