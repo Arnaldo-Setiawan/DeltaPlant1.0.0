@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { LiveblocksProvider } from "@liveblocks/react";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,7 +28,15 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <LiveblocksProvider
+          authEndpoint="/api/liveblocks-auth"
+          throttleDelay={16}
+          baseUrl={process.env.NEXT_PUBLIC_APP_URL}
+        >
+          {children}
+        </LiveblocksProvider>
+      </body>
     </html>
   );
 }
